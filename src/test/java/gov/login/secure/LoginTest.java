@@ -12,6 +12,23 @@ public class LoginTest {
     public void test1(){
         WebDriver driver = new ChromeDriver();
         driver.get("https://secure.login.gov/");
+
+        String buttonSignInXpath = "//*[@id=\"new_user\"]/lg-captcha-submit-button/lg-spinner-button/button/span[1]";
+        By buttonSignInBy = By.xpath(buttonSignInXpath);
+        WebElement buttonSignInWebElement = driver.findElement(buttonSignInBy);
+        buttonSignInWebElement.click();
+    }
+
+    @Test
+    public void test2(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://secure.login.gov/");
+
+        String inputEmailAddressXpath = "//*[@id=\"user_email\"]";
+        By inputEmailBy = By.xpath(inputEmailAddressXpath);
+        WebElement inputEmailWebElement = driver.findElement(inputEmailBy);
+        inputEmailWebElement.sendKeys("testA@test.com");
+
         String buttonSignInXpath = "//*[@id=\"new_user\"]/lg-captcha-submit-button/lg-spinner-button/button/span[1]";
         By buttonSignInBy = By.xpath(buttonSignInXpath);
         WebElement buttonSignInWebElement = driver.findElement(buttonSignInBy);
