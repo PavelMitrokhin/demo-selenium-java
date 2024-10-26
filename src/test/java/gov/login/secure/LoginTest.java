@@ -40,15 +40,31 @@ public class LoginTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://secure.login.gov/");
 
-        String inputEmailAddressXpath = "//*[@id=\"user_email\"]";
-        By inputEmailBy = By.xpath(inputEmailAddressXpath);
-        WebElement inputEmailWebElement = driver.findElement(inputEmailBy);
-        inputEmailWebElement.sendKeys("testA@test.com");
-
         String inputPasswordXpath = "/html/body/main/div/form/lg-password-toggle/lg-validated-field/div/input";
         By inputPasswordBy = By.xpath(inputPasswordXpath);
         WebElement inputPasswordWebElement = driver.findElement(inputPasswordBy);
         inputPasswordWebElement.sendKeys("1q2w#E4r");
+
+        String buttonSignInXpath = "//*[@id=\"new_user\"]/lg-captcha-submit-button/lg-spinner-button/button/span[1]";
+        By buttonSignInBy = By.xpath(buttonSignInXpath);
+        WebElement buttonSignInWebElement = driver.findElement(buttonSignInBy);
+        buttonSignInWebElement.click();
+    }
+
+    @Test
+    public void test4(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://secure.login.gov/");
+
+        String inputEmailAddressXpath = "//*[@id=\"user_email\"]";
+        By inputEmailBy = By.xpath(inputEmailAddressXpath);
+        WebElement inputEmailWebElement = driver.findElement(inputEmailBy);
+        inputEmailWebElement.sendKeys("testB@test.com");
+
+        String inputPasswordXpath = "/html/body/main/div/form/lg-password-toggle/lg-validated-field/div/input";
+        By inputPasswordBy = By.xpath(inputPasswordXpath);
+        WebElement inputPasswordWebElement = driver.findElement(inputPasswordBy);
+        inputPasswordWebElement.sendKeys("a1S@d3F$");
 
         String buttonSignInXpath = "//*[@id=\"new_user\"]/lg-captcha-submit-button/lg-spinner-button/button/span[1]";
         By buttonSignInBy = By.xpath(buttonSignInXpath);
