@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.concurrent.TimeUnit;
+
 public class LoginPage {
     private WebDriver driver;
 
@@ -29,15 +31,22 @@ public class LoginPage {
         inputPasswordWebElement.sendKeys(password);
     }
 
-    public String getErrorEmailOrPhoneNumber() {
-        By errorEmailOrNumberBy = By.xpath(LoginXpath.INPUT_EMPTY_EMAIL_OR_PHONE_NUMBER_XPATH);
-        WebElement errorEmailOrNumberWebElement = driver.findElement(errorEmailOrNumberBy);
-        return errorEmailOrNumberWebElement.getText();
+    public String getErrorEmptyEmailOrPhoneNumber() {
+        By errorEmptyEmailOrNumberBy = By.xpath(LoginXpath.OUTPUT_EMPTY_EMAIL_OR_PHONE_NUMBER_XPATH);
+        WebElement errorEmptyEmailOrNumberWebElement = driver.findElement(errorEmptyEmailOrNumberBy);
+        return errorEmptyEmailOrNumberWebElement.getText();
     }
 
-    public String getErrorPasswordTest() {
-        By errorPasswordBy = By.xpath(LoginXpath.INPUT_EMPTY_PASSWORD_XPATH);
-        WebElement errorPasswordWebElement = driver.findElement(errorPasswordBy);
-        return errorPasswordWebElement.getText();
+    public String getErrorEmptyPassword() {
+        By errorEmptyPasswordBy = By.xpath(LoginXpath.OUTPUT_EMPTY_PASSWORD_XPATH);
+        WebElement errorEmptyPasswordWebElement = driver.findElement(errorEmptyPasswordBy);
+        return errorEmptyPasswordWebElement.getText();
+    }
+
+    public String getErrorInvalidPassword() {
+        By errorInvalidPasswordBy = By.xpath(LoginXpath.OUTPUT_INVALID_PASSWORD_XPATH);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement errorInvalidPasswordWebElement = driver.findElement(errorInvalidPasswordBy);
+        return errorInvalidPasswordWebElement.getText();
     }
 }
