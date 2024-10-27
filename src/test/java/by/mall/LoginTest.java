@@ -45,4 +45,13 @@ public class LoginTest {
 
         Assertions.assertEquals(LoginMessage.ERROR_NO_PHONE_NUMBER, loginPage.getErrorMessage());
     }
+
+    @Test
+    public void negativeIncorrectPasswordOrPhoneNumberTest() {
+        loginPage.sendPhoneNumber("299339393");
+        loginPage.sendPassword("aisdkp323");
+        loginPage.clickButtonLogin();
+
+        Assertions.assertEquals(LoginMessage.ERROR_INCORRECT_PHONE_NUMBER_OR_PASSWORD, loginPage.getErrorMessage());
+    }
 }
