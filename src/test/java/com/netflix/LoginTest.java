@@ -28,8 +28,8 @@ public class LoginTest {
     public void negativeNoEmailAndPasswordTest() {
         loginPage.clickButtonSignIn();
 
-        Assertions.assertEquals(LoginMessage.INVALID_EMAIL_OR_PHONE_NUMBER, loginPage.getErrorEmailOrPhoneNumber());
-        Assertions.assertEquals(LoginMessage.INVALID_PASSWORD, loginPage.getErrorPasswordTest());
+        Assertions.assertEquals(LoginMessage.NO_EMAIL_OR_PHONE_NUMBER, loginPage.getErrorEmptyEmailOrPhoneNumber());
+        Assertions.assertEquals(LoginMessage.NO_PASSWORD, loginPage.getErrorEmptyPassword());
     }
 
     @Test
@@ -37,14 +37,23 @@ public class LoginTest {
         loginPage.sendKeysEmailOrPhoneNumber("test@test.com");
         loginPage.clickButtonSignIn();
 
-        Assertions.assertEquals(LoginMessage.INVALID_PASSWORD, loginPage.getErrorPasswordTest());
+        Assertions.assertEquals(LoginMessage.NO_PASSWORD, loginPage.getErrorEmptyPassword());
     }
 
     @Test
     public void negativeNoEmailOrPhoneNumberTest() {
-        loginPage.sendKeysPassword("kokojumbo123ayaye");
+        loginPage.sendKeysPassword("jackrusselterrier@gmail.com");
         loginPage.clickButtonSignIn();
 
-        Assertions.assertEquals(LoginMessage.INVALID_EMAIL_OR_PHONE_NUMBER, loginPage.getErrorEmailOrPhoneNumber());
+        Assertions.assertEquals(LoginMessage.NO_EMAIL_OR_PHONE_NUMBER, loginPage.getErrorEmptyEmailOrPhoneNumber());
+    }
+
+    @Test
+    public void negativeWrongCredentialsTest() {
+        String email = "jackrusselterrier@gmail.com";
+        loginPage.sendKeysEmailOrPhoneNumber(email);
+        loginPage.sendKeysPassword("pumbanator3000XXL");
+        loginPage.clickButtonSignIn();
+        Assertions.assertEquals(LoginMessage.INVALID_PASSWORD + email, loginPage.getErrorInvalidPassword());
     }
 }
