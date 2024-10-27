@@ -32,4 +32,11 @@ public class LoginPage {
         WebElement phoneNumberWebElement = driver.findElement(phoneNumberBy);
         phoneNumberWebElement.sendKeys(phoneNumber);
     }
+
+    public void sendPassword(String password) {
+        By passwordBy = By.xpath(LoginXpath.INPUT_PASSWORD_XPATH);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement passwordWebElement = driver.findElement(passwordBy);
+        passwordWebElement.sendKeys(password);
+    }
 }
