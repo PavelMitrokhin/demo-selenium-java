@@ -25,4 +25,11 @@ public class LoginPage {
         WebElement errorMessageWebElement = driver.findElement(errorMessageBy);
         return errorMessageWebElement.getText();
     }
+
+    public void sendPhoneNumber(String phoneNumber) {
+        By phoneNumberBy = By.xpath(LoginXpath.INPUT_PHONE_NUMBER_XPATH);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement phoneNumberWebElement = driver.findElement(phoneNumberBy);
+        phoneNumberWebElement.sendKeys(phoneNumber);
+    }
 }
