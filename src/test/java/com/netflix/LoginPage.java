@@ -18,13 +18,13 @@ public class LoginPage {
     }
 
     public String getErrorEmailOrNumberTest() {
-        By errorEmailOrNumberBy = By.xpath(LoginMessage.INVALID_EMAIL_OR_PHONE_NUMBER);
+        By errorEmailOrNumberBy = By.xpath(LoginXpath.INPUT_EMPTY_EMAIL_OR_PHONE_XPATH);
         WebElement errorEmailOrNumberWebElement = driver.findElement(errorEmailOrNumberBy);
         return errorEmailOrNumberWebElement.getText();
     }
 
     public String getErrorPasswordTest() {
-        By errorPasswordBy = By.xpath(LoginMessage.INVALID_PASSWORD);
+        By errorPasswordBy = By.xpath(LoginXpath.INPUT_EMPTY_PASSWORD_XPATH);
         WebElement errorPasswordWebElement = driver.findElement(errorPasswordBy);
         return errorPasswordWebElement.getText();
     }
