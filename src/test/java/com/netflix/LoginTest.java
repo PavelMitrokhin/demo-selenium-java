@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Set;
-
 public class LoginTest {
 
     private static WebDriver driver;
@@ -27,12 +25,26 @@ public class LoginTest {
     }
 
     @Test
-    public void negativeNoEmailAndPassword() {
-        loginPage.clickButtonSignInTest();
+    public void negativeNoEmailAndPasswordTest() {
+        loginPage.clickButtonSignIn();
 
-        Assertions.assertEquals(LoginMessage.INVALID_EMAIL_OR_PHONE_NUMBER, loginPage.getErrorEmailOrNumberTest());
+        Assertions.assertEquals(LoginMessage.INVALID_EMAIL_OR_PHONE_NUMBER, loginPage.getErrorEmailOrPhoneNumber());
         Assertions.assertEquals(LoginMessage.INVALID_PASSWORD, loginPage.getErrorPasswordTest());
     }
 
+    @Test
+    public void negativeNoPasswordTest() {
+        loginPage.sendKeysEmailOrPhoneNumber("test@test.com");
+        loginPage.clickButtonSignIn();
 
+        Assertions.assertEquals(LoginMessage.INVALID_PASSWORD, loginPage.getErrorPasswordTest());
+    }
+
+    @Test
+    public void negativeNoEmailOrPhoneNumberTest() {
+        loginPage.sendKeysPassword("kokojumbo123ayaye");
+        loginPage.clickButtonSignIn();
+
+        Assertions.assertEquals(LoginMessage.INVALID_EMAIL_OR_PHONE_NUMBER, loginPage.getErrorEmailOrPhoneNumber());
+    }
 }
