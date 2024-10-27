@@ -11,7 +11,7 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public void clickButtonSignInTest() {
+    public void clickButtonSignIn() {
         By buttonSignInBy = By.xpath(LoginXpath.BUTTON_SIGN_IN_XPATH);
         WebElement buttonSignInWebElement = driver.findElement(buttonSignInBy);
         buttonSignInWebElement.click();
@@ -29,7 +29,7 @@ public class LoginPage {
         inputPasswordWebElement.sendKeys(password);
     }
 
-    public String getErrorEmailOrPhoneNumberTest() {
+    public String getErrorEmailOrPhoneNumber() {
         By errorEmailOrNumberBy = By.xpath(LoginXpath.INPUT_EMPTY_EMAIL_OR_PHONE_NUMBER_XPATH);
         WebElement errorEmailOrNumberWebElement = driver.findElement(errorEmailOrNumberBy);
         return errorEmailOrNumberWebElement.getText();
