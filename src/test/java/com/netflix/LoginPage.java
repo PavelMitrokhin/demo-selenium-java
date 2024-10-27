@@ -18,7 +18,7 @@ public class LoginPage {
     }
 
     public void sendKeysEmailOrPhoneNumber(String emailOrPhoneNumber) {
-        By inputEmailOrPhoneNumberBy = By.xpath(LoginXpath.INPUT_EMAIL_OR_PHONE_XPATH);
+        By inputEmailOrPhoneNumberBy = By.xpath(LoginXpath.INPUT_EMAIL_OR_PHONE_NUMBER_XPATH);
         WebElement inputEmailOrPhoneNumberWebElement = driver.findElement(inputEmailOrPhoneNumberBy);
         inputEmailOrPhoneNumberWebElement.sendKeys(emailOrPhoneNumber);
     }
@@ -29,8 +29,8 @@ public class LoginPage {
         inputPasswordWebElement.sendKeys(password);
     }
 
-    public String getErrorEmailOrNumberTest() {
-        By errorEmailOrNumberBy = By.xpath(LoginXpath.INPUT_EMPTY_EMAIL_OR_PHONE_XPATH);
+    public String getErrorEmailOrPhoneNumberTest() {
+        By errorEmailOrNumberBy = By.xpath(LoginXpath.INPUT_EMPTY_EMAIL_OR_PHONE_NUMBER_XPATH);
         WebElement errorEmailOrNumberWebElement = driver.findElement(errorEmailOrNumberBy);
         return errorEmailOrNumberWebElement.getText();
     }
