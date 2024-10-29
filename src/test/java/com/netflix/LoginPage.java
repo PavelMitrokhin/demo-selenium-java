@@ -45,7 +45,6 @@ public class LoginPage {
 
     public String getErrorInvalidPassword() {
         By errorInvalidPasswordBy = By.xpath(LoginXpath.OUTPUT_INVALID_PASSWORD_XPATH);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement errorInvalidPasswordWebElement = driver.findElement(errorInvalidPasswordBy);
         return errorInvalidPasswordWebElement.getText();
     }
