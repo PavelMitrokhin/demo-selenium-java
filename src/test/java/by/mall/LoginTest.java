@@ -1,14 +1,9 @@
 package by.mall;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import java.time.Duration;
 
 public class LoginTest {
     private static WebDriver driver;
@@ -18,7 +13,7 @@ public class LoginTest {
     public void beforeEach() {
         driver = new ChromeDriver();
         loginPage = PageFactory.initElements(driver, LoginPage.class);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("https://emall.by/login/password");
     }
 
@@ -52,5 +47,10 @@ public class LoginTest {
         loginPage.clickButtonLogin();
 
         Assertions.assertEquals(LoginMessage.ERROR_INCORRECT_PHONE_NUMBER_OR_PASSWORD, loginPage.getErrorMessage());
+    }
+
+    @AfterEach
+    public void afterEach() {
+        driver.quit();
     }
 }
