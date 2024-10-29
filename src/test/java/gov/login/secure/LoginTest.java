@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTest {
@@ -73,6 +74,7 @@ public class LoginTest {
     public void test4(){
         WebDriver driver = new ChromeDriver();
         driver.get("https://secure.login.gov/");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         String inputEmailLocator = "//input[@name='user[email]']";
         By inputEmailBy = By.xpath(inputEmailLocator);
@@ -89,10 +91,12 @@ public class LoginTest {
         WebElement buttonSignInWebElement = driver.findElement(buttonSignInBy);
         buttonSignInWebElement.click();
 
-//        String errorMessageInvalidXpath = "/html/body/main/div/div[1]/div/p";
-//        WebElement messageInvalidWebElement = driver.findElement(By.xpath(errorMessageInvalidXpath));
-//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-//
-//        Assertions.assertEquals("The email or password you’ve entered is wrong. Try resetting your password.", messageInvalidWebElement.getText());
+        String errorMessageInvalidXpath = "/html/body/main/div/div[1]/div/p";
+        WebElement messageInvalidWebElement = driver.findElement(By.xpath(errorMessageInvalidXpath));
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        Assertions.assertEquals("The email or password you’ve entered is wrong. Try resetting your password.",
+                messageInvalidWebElement.getText());
+
     }
 }
