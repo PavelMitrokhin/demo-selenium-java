@@ -3,7 +3,10 @@ package by.mall;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class LoginPage {
@@ -21,7 +24,8 @@ public class LoginPage {
 
     public String getErrorMessage() {
         By errorMessageBy = By.xpath(LoginXpath.OUTPUT_ERROR_MESSAGE_XPATH);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        wait.until(ExpectedConditions.presenceOfElementLocated(errorMessageBy));
         WebElement errorMessageWebElement = driver.findElement(errorMessageBy);
         return errorMessageWebElement.getText();
     }
